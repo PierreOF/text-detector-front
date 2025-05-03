@@ -22,7 +22,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Slider } from "@/components/ui/slider"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import Image from "next/image"
+import NextImage from "next/image"
 import { cn } from "@/lib/utils"
 
 // Tipo para as estatísticas
@@ -205,7 +205,7 @@ export default function ImageUploader() {
     setIsPanning(!isPanning)
   }
 
-  const handleMouseDown = (e: React.MouseEvent, ref: React.RefObject<HTMLDivElement>) => {
+  const handleMouseDown = (e: React.MouseEvent, ref: typeof originalImageRef) => {
     if (!isPanning || !ref.current) return
 
     const startX = e.clientX
@@ -304,7 +304,7 @@ export default function ImageUploader() {
         <>
           <div className="flex justify-between items-center mb-6">
             <div className="flex gap-2">
-              <Button onClick={detectText} disabled={isProcessing} className="bg-blue-600 hover:bg-blue-700">
+              <Button onClick={detectText} disabled={isProcessing} className="bg-gray-600 hover:bg-gray-700">
                 {isProcessing ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -385,14 +385,11 @@ export default function ImageUploader() {
                     style={{ cursor: isPanning ? "grab" : "default" }}
                   >
                     <div className="relative max-h-[400px] overflow-auto">
-                      <img
-                        src={originalImage || "/placeholder.svg"}
+                      <NextImage
+                        src={originalImage}
                         alt="Imagem original"
-                        style={{
-                          maxWidth: "none",
-                          width: `${zoomLevel}%`,
-                          height: "auto",
-                        }}
+                        width={500}
+                        height={300}
                       />
                     </div>
                   </div>
