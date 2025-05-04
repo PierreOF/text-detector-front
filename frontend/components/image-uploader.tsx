@@ -193,6 +193,54 @@ export default function ImageUploader() {
     }, 1500)
   }
 
+  const detectarTextoNaAPI = async () => {
+    if (!originalImage) return
+  
+    setIsProcessing(true)
+  
+    try {
+      const base64Data = originalImage.split(",")[1]
+  
+      const response = await fetch("http://localhost:8000/detectar-texto/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ imagem_base64: base64Data }),
+      })
+  
+      if (!response.ok) throw new Error("Erro na API")
+  
+      const data = await response.json()
+  
+      setProcessedImage(`data:image/jpeg;base64,${data.imagem_processada_base64}`)
+  
+      const stats: TextStats = {
+        areasDetected: data.areas_texto,
+        totalArea: data.area_total_px2,
+        textDensity: Math.round(data.densidade_texto),
+        confidence: data.confianca,
+        estimatedWords: Math.round(data.area_total_px2 / 100),
+      }
+  
+      setTextStats(stats)
+  
+      const newHistoryItem: HistoryItem = {
+        id: Date.now().toString(),
+        originalImage,
+        processedImage: `data:image/jpeg;base64,${data.imagem_processada_base64}`,
+        timestamp: Date.now(),
+        stats,
+      }
+  
+      setHistory((prev) => [newHistoryItem, ...prev.slice(0, 9)])
+    } catch (error) {
+      console.error("Erro ao detectar texto:", error)
+    } finally {
+      setIsProcessing(false)
+    }
+  }
+
   const handleZoomChange = (value: number[]) => {
     setZoomLevel(value[0])
   }
@@ -304,7 +352,7 @@ export default function ImageUploader() {
         <>
           <div className="flex justify-between items-center mb-6">
             <div className="flex gap-2">
-              <Button onClick={detectText} disabled={isProcessing} className="bg-gray-600 hover:bg-gray-700">
+              <Button onClick={detectarTextoNaAPI} disabled={isProcessing} className="bg-gray-600 hover:bg-gray-700">
                 {isProcessing ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -460,11 +508,6 @@ export default function ImageUploader() {
                         <div className="bg-gray-50 p-4 rounded-lg">
                           <div className="text-sm text-gray-500 mb-1">Confiança</div>
                           <div className="text-2xl font-semibold">{textStats.confidence}%</div>
-                        </div>
-
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <div className="text-sm text-gray-500 mb-1">Palavras Estimadas</div>
-                          <div className="text-2xl font-semibold">{textStats.estimatedWords}</div>
                         </div>
 
                         <div className="bg-gray-50 p-4 rounded-lg">

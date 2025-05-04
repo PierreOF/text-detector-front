@@ -11,7 +11,7 @@ export default function Footer() {
 
           <div className="flex items-center">
             <a
-              href="https://github.com/seu-usuario/detector-texto-redacoes"
+              href="https://github.com/PierreOF/text-detector-front"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center hover:text-blue-600 transition-colors"
