@@ -86,6 +86,19 @@ curl -X 'POST' \
 }'
 ```
 
+## Instalando dependências do frontend
+
+```bash
+npm i
+```
+
+## Executando o Frontend
+
+```bash
+npm run dev
+```
+
+
 ## Como o Código Funciona
 
 ### Função `base64_para_imagem`
