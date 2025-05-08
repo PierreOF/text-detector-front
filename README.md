@@ -64,7 +64,6 @@ Detecta as áreas de texto em uma imagem enviada no formato base64.
   "imagem_processada_base64": "string (imagem processada em base64)",
   "areas_texto": 5,
   "densidade_texto": 23.45,
-  "confianca": 68,
   "area_total_px2": 80000
 }
 ```
