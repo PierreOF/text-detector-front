@@ -103,7 +103,7 @@ curl -X 'POST' \
 ## Instalando dependências do frontend
 
 ```bash
-npm i
+npm install --legacy-peer-deps
 ```
 
 ## Executando o Frontend
