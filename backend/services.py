@@ -11,7 +11,7 @@ def imagem_para_base64(imagem: np.ndarray) -> str:
     _, buffer = cv2.imencode('.jpg', imagem)
     return base64.b64encode(buffer).decode('utf-8')
 
-def calcular_analises(imagem, imagem_cinza, contornos) -> dict:
+def calcular_analises(imagem, contornos) -> dict:
     altura, largura = imagem.shape[:2]
     area_total_img = altura * largura
 
@@ -35,8 +35,20 @@ def calcular_analises(imagem, imagem_cinza, contornos) -> dict:
         "area_total_px2": area_total_img
     }
 
+def ajustar_orientacao(imagem: np.ndarray) -> np.ndarray:
+    altura, largura = imagem.shape[:2]
+    
+    if largura > altura:
+        
+        imagem = cv2.rotate(imagem, cv2.ROTATE_90_CLOCKWISE)
+        
+    return imagem
+
 def detectar_texto_base64(imagem_base64: str) -> dict:
     imagem = base64_para_imagem(imagem_base64)
+    
+    imagem = ajustar_orientacao(imagem)
+    
     imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 
     binaria = cv2.adaptiveThreshold(imagem_cinza, 255,
@@ -52,7 +64,7 @@ def detectar_texto_base64(imagem_base64: str) -> dict:
             cv2.rectangle(imagem, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
     imagem_processada_base64 = imagem_para_base64(imagem)
-    analises = calcular_analises(imagem, imagem_cinza, contornos)
+    analises = calcular_analises(imagem, contornos)
 
     return {
         "imagem_processada_base64": imagem_processada_base64,
