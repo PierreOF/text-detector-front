@@ -32,15 +32,14 @@ Este projeto utiliza FastAPI para criar uma API de detecção de áreas de texto
    ```bash
    python -m venv venv
    ```
-
+Linux (na mesma pasta do venv)
    ```bash
    source venv/bin/activate
    ```
 
-Windows
-
+Windows (na mesma pasta do venv)
    ```bash
-   ./venv/scripts/activate
+   venv/scripts/activate
    ```
 
 2. Instale as dependências:
