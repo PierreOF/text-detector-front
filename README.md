@@ -27,6 +27,21 @@ Este projeto utiliza FastAPI para criar uma API de detecção de áreas de texto
    git clone https://github.com/PierreOF/text-detector-front/
    cd text-detector-front
    ```
+## Criando ambiente de execução
+
+   ```bash
+   python -m venv venv
+   ```
+
+   ```bash
+   source venv/bin/activate
+   ```
+
+Windows
+
+   ```bash
+   ./venv/scripts/activate
+   ```
 
 2. Instale as dependências:
 
