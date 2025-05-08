@@ -129,6 +129,11 @@ Os testes podem ser realizados diretamente com as ferramentas de teste do FastAP
 http://127.0.0.1:8000/docs
 ```
 
----
+## Teste frontend 
 
-Esse é o esqueleto básico para o seu repositório no GitHub. Basta ajustar o nome do repositório, os detalhes do seu projeto e as instruções de uso conforme necessário.
+```
+http://localhost:3000
+```
+
+
+---
