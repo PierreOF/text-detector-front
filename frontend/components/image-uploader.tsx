@@ -499,22 +499,16 @@ export default function ImageUploader() {
                         </div>
 
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <div className="text-sm text-gray-500 mb-1">Confiança</div>
-                          <div className="text-2xl font-semibold">{textStats.confidence}%</div>
-                        </div>
-
-                        <div className="bg-gray-50 p-4 rounded-lg">
                           <div className="text-sm text-gray-500 mb-1">Área Total (px²)</div>
                           <div className="text-2xl font-semibold">{textStats.totalArea.toLocaleString()}</div>
                         </div>
                       </div>
 
                       <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                        <h4 className="text-sm font-medium text-blue-800 mb-2">Análise</h4>
+                        <h4 className="text-sm font-medium text-blue-800 mb-2">Análise/Insights</h4>
                         <p className="text-sm text-blue-700">
                           A imagem contém {textStats.areasDetected} áreas de texto com uma densidade de{" "}
-                          {textStats.textDensity}%. A confiança média da detecção é de {textStats.confidence}%, com
-                          aproximadamente {textStats.estimatedWords} palavras.
+                          {textStats.textDensity}%.
                         </p>
                       </div>
                     </div>
