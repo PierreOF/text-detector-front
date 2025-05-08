@@ -30,11 +30,6 @@ export default function AboutSection() {
       {isExpanded && (
         <CardContent>
           <div className="space-y-3 text-gray-600 text-sm">
-            <p>
-              Este projeto faz parte de um sistema de seleção de alunos para um programa de correção automática de
-              redações com Inteligência Artificial.
-            </p>
-
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
               <h3 className="text-sm font-medium flex items-center mb-2 text-gray-700">
                 <Code className="h-4 w-4 mr-2" />
@@ -50,14 +45,9 @@ export default function AboutSection() {
 
             <p>
               O sistema utiliza técnicas avançadas de Visão Computacional para identificar automaticamente áreas de
-              texto em imagens escaneadas de redações. Isso permite a extração e posterior análise do conteúdo escrito
-              pelos alunos.
+              texto em imagens escaneadas de redações. Isso permite a extração e posterior análise do conteúdo escrito.
             </p>
 
-            <p>
-              Em um ambiente de produção, o sistema se conectaria a uma API que processa as imagens usando bibliotecas
-              como OpenCV e retorna as coordenadas das áreas de texto detectadas.
-            </p>
           </div>
         </CardContent>
       )}

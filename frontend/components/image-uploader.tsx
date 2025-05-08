@@ -70,13 +70,6 @@ export default function ImageUploader() {
     }
   }, [])
 
-  // Salvar histórico no localStorage quando mudar
-  useEffect(() => {
-    if (history.length > 0) {
-      localStorage.setItem("imageHistory", JSON.stringify(history))
-    }
-  }, [history])
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
@@ -183,7 +176,7 @@ export default function ImageUploader() {
             stats,
           }
 
-          setHistory((prev) => [newHistoryItem, ...prev.slice(0, 9)])
+          setHistory((prev) => [newHistoryItem, ...prev.slice(0, 2)])
 
           setIsProcessing(false)
         }
