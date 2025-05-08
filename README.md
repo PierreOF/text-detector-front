@@ -136,3 +136,8 @@ http://localhost:3000
 
 
 ---
+
+
+## Dificuldade
+
+primeiro contato com bibliotecas de Visão Computacional
