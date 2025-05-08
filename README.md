@@ -38,7 +38,7 @@ Este projeto utiliza FastAPI para criar uma API de detecção de áreas de texto
 Para rodar o servidor FastAPI localmente:
 
 ```bash
-uvicorn main:app --reload
+fastapi run main.py
 ```
 
 O servidor estará disponível em [http://127.0.0.1:8000](http://127.0.0.1:8000).
