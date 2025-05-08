@@ -1,6 +1,7 @@
 # Detecção de Texto em Imagens - FastAPI
 
 Este projeto utiliza FastAPI para criar uma API de detecção de áreas de texto manuscritas em imagens, processando-as e retornando informações sobre as áreas de texto encontradas.
+![image](https://github.com/user-attachments/assets/39382051-7906-4004-8cd9-53b66aa13e5c)
 
 ## Funcionalidades
 
